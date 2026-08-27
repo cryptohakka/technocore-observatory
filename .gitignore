@@ -1,0 +1,6 @@
+*.env
+*.env.*
+!*.env.public
+*.ots.bak
+__pycache__/
+*.pyc
