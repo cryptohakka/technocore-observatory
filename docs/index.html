@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Technocore Observatory</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <style>
   body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; background:#0A1128; color:#e8ecf1; }
   h1 { font-size: 1.6rem; margin-bottom: 4px; }
@@ -48,6 +48,7 @@ async function main() {
       fetch('data/latest.json').then(r => r.json()),
     ]);
   } catch (e) {
+    console.error('fetch failed', e);
     document.getElementById('empty').style.display = 'block';
     return;
   }
@@ -56,57 +57,65 @@ async function main() {
     return;
   }
   document.getElementById('content').style.display = 'block';
-
   const labels = series.map(r => r.date);
 
-  // latest stat cards
-  const l = series[series.length - 1];
-  document.getElementById('latest-stats').innerHTML = `
-    <div class="stat"><div class="v">${l.rooms_total.toLocaleString()} / ${l.rooms_capacity.toLocaleString()}</div><div class="l">rooms used / cap</div></div>
-    <div class="stat"><div class="v">${l.notes_total.toLocaleString()} / ${l.notes_capacity.toLocaleString()}</div><div class="l">notes used / cap</div></div>
-    <div class="stat"><div class="v">${l.note_to_message_ratio}</div><div class="l">note:message ratio</div></div>
-    <div class="stat"><div class="v">${(l.nick_diversity*100).toFixed(1)}%</div><div class="l">nick diversity</div></div>
-    <div class="stat"><div class="v">${l.date}</div><div class="l">as of</div></div>
-  `;
+  try {
+    const l = series[series.length - 1];
+    document.getElementById('latest-stats').innerHTML = `
+      <div class="stat"><div class="v">${l.rooms_total.toLocaleString()} / ${l.rooms_capacity.toLocaleString()}</div><div class="l">rooms used / cap</div></div>
+      <div class="stat"><div class="v">${l.notes_total.toLocaleString()} / ${l.notes_capacity.toLocaleString()}</div><div class="l">notes used / cap</div></div>
+      <div class="stat"><div class="v">${l.note_to_message_ratio}</div><div class="l">note:message ratio</div></div>
+      <div class="stat"><div class="v">${(l.nick_diversity*100).toFixed(1)}%</div><div class="l">nick diversity</div></div>
+      <div class="stat"><div class="v">${l.date}</div><div class="l">as of</div></div>
+    `;
+  } catch (e) { console.error('latest-stats render failed', e); }
 
-  const ctxCap = document.getElementById('capacityChart');
-  new Chart(ctxCap, {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        { label: 'rooms used', data: series.map(r => r.rooms_total), borderColor: '#7fb3ff', tension: 0.2 },
-        { label: 'notes used (÷10)', data: series.map(r => Math.round(r.notes_total/10)), borderColor: '#ffb37f', tension: 0.2 },
-      ]
-    },
-    options: { scales: { y: { beginAtZero: true } }, plugins: { legend: { labels: { color: '#e8ecf1' } } } }
-  });
-
-  const ctxEng = document.getElementById('engagementChart');
-  new Chart(ctxEng, {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        { label: 'note:message ratio', data: series.map(r => r.note_to_message_ratio), borderColor: '#ffb37f', tension: 0.2 },
-        { label: 'nick diversity', data: series.map(r => r.nick_diversity), borderColor: '#7fffb3', tension: 0.2, yAxisID: 'y1' },
-      ]
-    },
-    options: {
-      scales: {
-        y: { beginAtZero: true },
-        y1: { position: 'right', min: 0, max: 1, grid: { drawOnChartArea: false } },
+  try {
+    if (typeof Chart === 'undefined') throw new Error('Chart.js not loaded');
+    const ctxCap = document.getElementById('capacityChart');
+    new Chart(ctxCap, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'rooms used', data: series.map(r => r.rooms_total), borderColor: '#7fb3ff', tension: 0.2 },
+          { label: 'notes used (÷10)', data: series.map(r => Math.round(r.notes_total/10)), borderColor: '#ffb37f', tension: 0.2 },
+        ]
       },
-      plugins: { legend: { labels: { color: '#e8ecf1' } } }
-    }
-  });
+      options: { scales: { y: { beginAtZero: true } }, plugins: { legend: { labels: { color: '#e8ecf1' } } } }
+    });
+  } catch (e) { console.error('capacity chart failed', e); }
 
-  const tbody = document.querySelector('#topRoomsTable tbody');
-  (latest.top_rooms_by_bytes || []).forEach(r => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${r.room}</td><td>${r.bytes.toLocaleString()}</td><td>${r.nick_diversity ?? '-'}</td>`;
-    tbody.appendChild(tr);
-  });
+  try {
+    if (typeof Chart === 'undefined') throw new Error('Chart.js not loaded');
+    const ctxEng = document.getElementById('engagementChart');
+    new Chart(ctxEng, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'note:message ratio', data: series.map(r => r.note_to_message_ratio), borderColor: '#ffb37f', tension: 0.2 },
+          { label: 'nick diversity', data: series.map(r => r.nick_diversity), borderColor: '#7fffb3', tension: 0.2, yAxisID: 'y1' },
+        ]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true },
+          y1: { position: 'right', min: 0, max: 1, grid: { drawOnChartArea: false } },
+        },
+        plugins: { legend: { labels: { color: '#e8ecf1' } } }
+      }
+    });
+  } catch (e) { console.error('engagement chart failed', e); }
+
+  try {
+    const tbody = document.querySelector('#topRoomsTable tbody');
+    (latest.top_rooms_by_bytes || []).forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${r.room}</td><td>${r.bytes.toLocaleString()}</td><td>${r.nick_diversity ?? '-'}</td>`;
+      tbody.appendChild(tr);
+    });
+  } catch (e) { console.error('top rooms table failed', e); }
 }
 main();
 </script>
