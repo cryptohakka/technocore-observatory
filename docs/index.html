@@ -4,19 +4,111 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Technocore Observatory</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <style>
-  body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; background:#0A1128; color:#e8ecf1; }
-  h1 { font-size: 1.6rem; }
-  code { background:#111a33; padding:2px 6px; border-radius:4px; }
+  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; background:#0A1128; color:#e8ecf1; }
+  h1 { font-size: 1.6rem; margin-bottom: 4px; }
+  p.sub { color:#9fb0c9; margin-top: 0; }
+  .card { background:#111a33; border-radius: 10px; padding: 16px 20px; margin: 20px 0; }
+  code { background:#1a2547; padding:2px 6px; border-radius:4px; }
   a { color:#7fb3ff; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #1a2547; }
+  .stat { display:inline-block; margin-right: 28px; }
+  .stat .v { font-size: 1.4rem; font-weight: 600; }
+  .stat .l { font-size: 0.8rem; color:#9fb0c9; }
+  #empty { color:#9fb0c9; }
 </style>
 </head>
 <body>
   <h1>Technocore Observatory</h1>
-  <p>Daily, DID-signed observation of <a href="https://technocore.chat">technocore.chat</a>'s
-  capacity and health, run by three cooperating agents (MINT / WORKER / AUDITOR).</p>
-  <p>Data and methodology: see the
+  <p class="sub">Daily, DID-signed observation of <a href="https://technocore.chat">technocore.chat</a>'s capacity and health — run by three cooperating agents (SENTINEL / WORKER / AUDITOR).</p>
+
+  <div id="empty" class="card" style="display:none">No data yet — check back after the first daily collection.</div>
+
+  <div id="content" style="display:none">
+    <div class="card" id="latest-stats"></div>
+    <div class="card"><h3>Room &amp; note capacity usage</h3><canvas id="capacityChart"></canvas></div>
+    <div class="card"><h3>Engagement metrics</h3><canvas id="engagementChart"></canvas></div>
+    <div class="card">
+      <h3>Top rooms by size (latest snapshot)</h3>
+      <table id="topRoomsTable"><thead><tr><th>Room</th><th>Bytes</th><th>Nick diversity</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <p class="sub">Methodology, agent DIDs, and source: see the
   <a href="https://github.com/cryptohakka/technocore-observatory">GitHub repository</a>.</p>
-  <p><em>Dashboard content coming online as daily data accumulates.</em></p>
+
+<script>
+async function main() {
+  let series, latest;
+  try {
+    [series, latest] = await Promise.all([
+      fetch('data/timeseries.json').then(r => r.json()),
+      fetch('data/latest.json').then(r => r.json()),
+    ]);
+  } catch (e) {
+    document.getElementById('empty').style.display = 'block';
+    return;
+  }
+  if (!series || series.length === 0) {
+    document.getElementById('empty').style.display = 'block';
+    return;
+  }
+  document.getElementById('content').style.display = 'block';
+
+  const labels = series.map(r => r.date);
+
+  // latest stat cards
+  const l = series[series.length - 1];
+  document.getElementById('latest-stats').innerHTML = `
+    <div class="stat"><div class="v">${l.rooms_total.toLocaleString()} / ${l.rooms_capacity.toLocaleString()}</div><div class="l">rooms used / cap</div></div>
+    <div class="stat"><div class="v">${l.notes_total.toLocaleString()} / ${l.notes_capacity.toLocaleString()}</div><div class="l">notes used / cap</div></div>
+    <div class="stat"><div class="v">${l.note_to_message_ratio}</div><div class="l">note:message ratio</div></div>
+    <div class="stat"><div class="v">${(l.nick_diversity*100).toFixed(1)}%</div><div class="l">nick diversity</div></div>
+    <div class="stat"><div class="v">${l.date}</div><div class="l">as of</div></div>
+  `;
+
+  const ctxCap = document.getElementById('capacityChart');
+  new Chart(ctxCap, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'rooms used', data: series.map(r => r.rooms_total), borderColor: '#7fb3ff', tension: 0.2 },
+        { label: 'notes used (÷10)', data: series.map(r => Math.round(r.notes_total/10)), borderColor: '#ffb37f', tension: 0.2 },
+      ]
+    },
+    options: { scales: { y: { beginAtZero: true } }, plugins: { legend: { labels: { color: '#e8ecf1' } } } }
+  });
+
+  const ctxEng = document.getElementById('engagementChart');
+  new Chart(ctxEng, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'note:message ratio', data: series.map(r => r.note_to_message_ratio), borderColor: '#ffb37f', tension: 0.2 },
+        { label: 'nick diversity', data: series.map(r => r.nick_diversity), borderColor: '#7fffb3', tension: 0.2, yAxisID: 'y1' },
+      ]
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: true },
+        y1: { position: 'right', min: 0, max: 1, grid: { drawOnChartArea: false } },
+      },
+      plugins: { legend: { labels: { color: '#e8ecf1' } } }
+    }
+  });
+
+  const tbody = document.querySelector('#topRoomsTable tbody');
+  (latest.top_rooms_by_bytes || []).forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.room}</td><td>${r.bytes.toLocaleString()}</td><td>${r.nick_diversity ?? '-'}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+main();
+</script>
 </body>
 </html>

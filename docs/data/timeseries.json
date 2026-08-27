@@ -1,0 +1,13 @@
+[
+  {
+    "date": "2026-08-27",
+    "rooms_total": 17735,
+    "rooms_capacity": 20480,
+    "notes_total": 421151,
+    "notes_capacity": 655360,
+    "note_to_message_ratio": 44.7177,
+    "nick_diversity": 0.2171,
+    "zero_response_share": 0.1158,
+    "windowed_messages": 9418
+  }
+]
