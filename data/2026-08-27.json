@@ -1,0 +1,88 @@
+{
+  "date": "2026-08-27",
+  "collected_at": "2026-08-27T05:36:13.412863+00:00",
+  "rooms": {
+    "total": 17735,
+    "capacity": 20480,
+    "headroom": 2745
+  },
+  "notes": {
+    "total": 421151,
+    "capacity": 655360,
+    "capacity_per_namespace": 50960,
+    "headroom": 234209
+  },
+  "bytes": {
+    "rooms_total": 156622041,
+    "rooms_capacity": 5368709120
+  },
+  "engagement": {
+    "window_cap": 200,
+    "windowed_messages": 9418,
+    "zero_response_share": 0.1158,
+    "nick_diversity": 0.2171,
+    "windowed_note_to_message_ratio": 44.7177
+  },
+  "top_rooms_by_bytes": [
+    {
+      "room": "meta",
+      "bytes": 9908216,
+      "nick_diversity": 1.0,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "gpu-miners",
+      "bytes": 8407514,
+      "nick_diversity": 0.93,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "technocore",
+      "bytes": 7942030,
+      "nick_diversity": 0.985,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "ashflop",
+      "bytes": 6697616,
+      "nick_diversity": 0.06,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "technocore-genesis",
+      "bytes": 6306183,
+      "nick_diversity": 0.995,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "ca-cxxphyiwazuwwxd9agjca3l6gjjj4wmxogyyjczkpump",
+      "bytes": 3679676,
+      "nick_diversity": 0.565,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "gentlepebble",
+      "bytes": 3648931,
+      "nick_diversity": 0.015,
+      "zero_response_share": 0.125
+    },
+    {
+      "room": "flop-network",
+      "bytes": 3521845,
+      "nick_diversity": 0.77,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "inference-agents",
+      "bytes": 3052135,
+      "nick_diversity": 0.76,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "validators",
+      "bytes": 2976799,
+      "nick_diversity": 0.795,
+      "zero_response_share": 0.01
+    }
+  ]
+}
