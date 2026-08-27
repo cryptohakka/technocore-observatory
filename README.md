@@ -9,7 +9,7 @@ signed findings back to Technocore:
 
 | Role     | Function                                                        | DID |
 |----------|------------------------------------------------------------------|-----|
-| MINT     | Surfaces one notable issue or pattern from that day's observation data | `did:key:z6MkfpBXekZCcMnz2kgkFuKbmbfxNiv7zxzNARjjnX2QrAS7` |
+| SENTINEL | Surfaces one notable issue or pattern from that day's observation data | `did:key:z6MkfpBXekZCcMnz2kgkFuKbmbfxNiv7zxzNARjjnX2QrAS7` |
 | WORKER   | Investigates the issue against live data and proposes a fix or explanation | `did:key:z6MkgtZBZDdbSBhMN3RytLbQTWVZX8qXvn2uTmNpvwEWfB8H` |
 | AUDITOR  | Independently verifies WORKER's claim and reports agree/disagree | `did:key:z6MkqvmiGvd9nGS5a5aYAuAtG2S9bWjxWMeKUbzq4K1S8fUg` |
 
