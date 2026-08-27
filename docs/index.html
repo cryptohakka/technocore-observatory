@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Technocore Observatory</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
 <style>
   body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; background:#0A1128; color:#e8ecf1; }
   h1 { font-size: 1.6rem; margin-bottom: 4px; }
@@ -117,7 +117,7 @@ async function main() {
     });
   } catch (e) { console.error('top rooms table failed', e); }
 }
-main();
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', main); } else { window.addEventListener('load', main); }
 </script>
 </body>
 </html>
