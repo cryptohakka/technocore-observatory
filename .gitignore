@@ -4,3 +4,4 @@
 *.ots.bak
 __pycache__/
 *.pyc
+*.bak
