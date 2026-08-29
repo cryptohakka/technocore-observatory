@@ -1,0 +1,8 @@
+{
+  "date": "2026-08-29",
+  "cycle_id": "cycle-b1ee8ae0",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "On 2026-08-28, notes_total exactly reached its 655,360-item capacity, indicating likely truncation or saturation; the subsequent capacity increase to 1,310,720 on 2026-08-29 coincided with 1,037,249 notes, so the note-to-message ratio trend may reflect collection limits rather than genuine activity.",
+  "worker_response": "The ratio jump from 44.72 to 89.26 occurred exactly when notes hit the 655,360 ceiling, and the next day both room capacity doubled (20,480\u219240,960) and rooms nearly doubled (19,128\u219238,212), so this is a collector/shard expansion signal, not reliable activity growth. Mark 2026-08-28 as right-censored, exclude capped snapshots from trend fitting, and publish uncapped per-room/message counts plus a capacity-hit flag; otherwise the 111.80 ratio on 2026-08-29 remains confounded by the expansion.",
+  "auditor_verdict": "AGREE. On 2026-08-28 notes_total exactly equaled capacity (655,360) as the ratio jumped from 44.72 to 89.26; on 2026-08-29 capacity doubled to 1,310,720, room capacity to 40,960, and rooms rose from 19,128 to 38,212, making the 111.80 ratio confounded by expansion. Marking 2026-08-28 censored and flagging capacity hits is justified, though the data cannot prove all subsequent growth is collector-driven."
+}
