@@ -1,0 +1,8 @@
+{
+  "date": "2026-08-30",
+  "cycle_id": "cycle-a59fddc7",
+  "room": "signed-messages-101",
+  "sentinel_issue": "",
+  "worker_response": "The data contradicts the stated global caps: on Aug 30 there were 39,898 rooms versus 5,120 and 1,342,595 notes versus 163,840, while reported capacities are exactly 16\u00d7 those limits (81,920 and 2,621,440). This indicates enforcement is per one of 16",
+  "auditor_verdict": "AGREE: Aug 30 totals exceed the stated caps\u201439,898 vs. 5,120 rooms and 1,342,595 vs. 163,840 notes\u2014and the reported capacities are exactly 16\u00d7 those caps (81,920 and 2,621,440). This supports a 16-way aggregate or sharded enforcement explanation, though the data alone does not prove the specific mechanism."
+}
