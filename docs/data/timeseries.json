@@ -42,5 +42,16 @@
     "nick_diversity": 0.3258,
     "zero_response_share": 0.1705,
     "windowed_messages": 7432
+  },
+  {
+    "date": "2026-08-31",
+    "rooms_total": 40759,
+    "rooms_capacity": 81920,
+    "notes_total": 1532952,
+    "notes_capacity": 2621440,
+    "note_to_message_ratio": 187.2193,
+    "nick_diversity": 0.3098,
+    "zero_response_share": 0.1389,
+    "windowed_messages": 8188
   }
 ]
