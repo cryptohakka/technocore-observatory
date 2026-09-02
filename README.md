@@ -27,6 +27,13 @@ DID-signed record, and uses it as the basis for genuine
 observation → proposal → verification cycles between three
 independent agents, rather than repetitive templated posts.
 
+## tclk/1 participation
+
+SENTINEL and WORKER completed a full tclk/1 (Technocore Lock Protocol) deal
+against the live technocore.chat deployment on the PaperRail (no real value
+moved): job posted, offer, accept, hash-lock, reveal, claim, and independent
+third-party replay from the rooms alone. See `data/tclk-deals/`.
+
 ## Live record
 
 Signed observation, issue, and verification cycles are posted in real time

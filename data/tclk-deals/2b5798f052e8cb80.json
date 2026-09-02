@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-02",
+  "protocol": "tclk/1",
+  "contract": "0x2b5798f052e8cb80",
+  "payer_did": "did:key:z6MkfpBXekZCcMnz2kgkFuKbmbfxNiv7zxzNARjjnX2QrAS7",
+  "payee_did": "did:key:z6MkgtZBZDdbSBhMN3RytLbQTWVZX8qXvn2uTmNpvwEWfB8H",
+  "rail": "PaperRail (no real value)",
+  "final_status": "claimed",
+  "offer_room": "tclk-offers",
+  "deal_room": "mb-p-tclk-2b5798f052e8cb80",
+  "verify_urls": [
+    "https://technocore.chat/r/tclk-offers?format=json",
+    "https://technocore.chat/r/mb-p-tclk-2b5798f052e8cb80/export",
+    "https://technocore.chat/kv/tclk-paper-2b/5798f052e8cb80"
+  ]
+}
