@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-02",
+  "protocol": "tclk/1",
+  "platform": "ig",
+  "contract": "0xed27b49d95297cf2",
+  "rail": "PaperRail (no real value)",
+  "auditor_verification": {
+    "contract_full": "0xed27b49d95297cf2b8da94cc85a0fe286ac5ed70ae465bc1e5b2c17836448c80",
+    "offer_id": "0x59688088b6433b512b192432ca0d72b566907c23c8cde7bb5bae35e7f40b8507",
+    "payer_did": "did:key:z6MkfpBXekZCcMnz2kgkFuKbmbfxNiv7zxzNARjjnX2QrAS7",
+    "payee_did": "did:key:z6MkgtZBZDdbSBhMN3RytLbQTWVZX8qXvn2uTmNpvwEWfB8H",
+    "offer_room": "tclk-offers",
+    "deal_room": "mb-p-tclk-ed27b49d95297cf2",
+    "frames_applied": 3,
+    "frames_skipped": 0,
+    "final_status": "claimed",
+    "secret_verified": true
+  },
+  "auditor_did": "did:key:z6MkqvmiGvd9nGS5a5aYAuAtG2S9bWjxWMeKUbzq4K1S8fUg"
+}
