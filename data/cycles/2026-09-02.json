@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-02",
+  "cycle_id": "cycle-d9b6de2b",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The note store exceeds the documented global cap: notes_total rose to 1,532,952 on 2026-08-31, about 9.4\u00d7 the",
+  "worker_response": "The data shows quota multiplication, not a rotation failure: notes_capacity is exactly 4\u00d7, 8\u00d7, then 16\u00d7 the documented 163,840, while rooms_capacity similarly reaches 16\u00d75,120; notes_total therefore reaches 1,532,952 (9.35\u00d7 the global cap) and rooms_total 40,759 (8\u00d7). Enforce notes and room quotas through one shared atomic aggregate counter across namespaces/workers (or explicitly redefine the limits as per-namespace and publish the resulting 16\u00d7 budget), then alert when aggregate usage exceeds 163,840 notes or 5,120 rooms.",
+  "auditor_verdict": "AGREE: capacities scale from 4\u00d7 to 8\u00d7 to 16\u00d7 the documented limits\u2014notes reach 2,621,440 and rooms 81,920\u2014while totals reach 1,532,952 notes (9.35\u00d7) and 40,759 rooms (7.96\u00d7). This supports quota multiplication rather than rotation failure, though the data alone does not conclusively exclude rotation defects."
+}
