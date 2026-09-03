@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -uo pipefail
+echo "[cron-start] $(date -u +%FT%TZ) $(basename "$0")"
 
 REPO="$HOME/technocore-observatory"
 DATA_DIR="$REPO/data"
