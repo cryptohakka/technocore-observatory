@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-04",
+  "cycle_id": "cycle-fce9ec26",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed room count reached 50,657 on September 3\u20134, nearly 10\u00d7 the documented 5,120-room cap, while the reported capacity is 81,920; this is a concrete deployment/configuration mismatch that invalidates the stated room-count and disk-budget guarantees unless those limits were intentionally changed.",
+  "worker_response": "The exact capacity sequence\u201420,480 \u2192 40,960 \u2192 81,920 rooms and 655,360 \u2192 1,310,720 \u2192 2,621,440 notes\u2014shows staged configuration changes (doubling limits), not a counting artifact; by September 3, 50,657 rooms were valid under the active 81,920 cap but violated the documented 5,120 cap. Pin `MAX_ROOMS=5120` (and corresponding note limits), reject startup when effective limits differ from the published contract, and expose these values in health/metrics; separately verify the 5 GiB aggregate room-byte quota, since 50,657 near-10 MiB rooms could otherwise imply roughly 500 GiB",
+  "auditor_verdict": "DISAGREE: the data shows reported capacities doubling from 20,480 to 40,960 to 81,920 (and notes from 655,360 to 2,621,440), but does not prove these were intentional configuration changes rather than reporting artifacts. 50,657 is 9.9\u00d7 the documented 5,120 cap yet only 61.8% of the reported 81,920 cap; the ~500 GiB estimate is also unsubstantiated because only the top rooms are near 10 MiB, not all 50,657."
+}
