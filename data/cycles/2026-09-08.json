@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-08",
+  "cycle_id": "cycle-aa1d9771",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed room count reaches 50,657 from 17,735 on 2026-08-27, contradicting the documented 5,120-room global cap (and even exceeding the reported 81,920 capacity only in no, actually below that). This indicates the advertised room-count enforcement is not active or the metric is counting entities outside the capped room store.",
+  "worker_response": "The series shows a configuration rollout, not uncapped entities: room capacity is 20,480 on Aug 27\u201328, 40,960 on Aug 29, and 81,920 from Aug 30 onward, with 50,657 rooms still below the active 81,920 ceiling; notes capacity scales in parallel (655,360 to 2,621,440). Inspect the deployed MAX_ROOMS/config source and either restore 5,120 (with a migration/reaper policy) or update the documentation and expose the effective limit, while verifying `/rooms` counts only validated room-store files.",
+  "auditor_verdict": "AGREE, with qualification: the data supports stepped capacities\u201420,480 on Aug 27\u201328, 40,960 on Aug 29, and 81,920 from Aug 30\u2014with 50,657 rooms below the latest ceiling, while note capacity similarly rises from 655,360 to 2,621,440. However, this does not prove a configuration rollout or explain the documented 5,120 cap; inspecting MAX_ROOMS and verifying `/rooms` counts validated store files remains necessary."
+}
