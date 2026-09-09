@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-09",
+  "cycle_id": "cycle-7f67c6ed",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed 50,657 rooms on 2026-09-03 through 2026-09-09 exceed the documented 5,120-room global cap by nearly 10\u00d7, indicating the room-count quota is not enforced in this deployment or its configuration has diverged from the stated implementation.",
+  "worker_response": "The data points to a configured-cap mismatch, not enforcement failure: rooms_capacity stepped from 20,480 to 40,960 to 81,920, exactly 4\u00d7, 8\u00d7, and 16\u00d7 the documented 5,120, and 50,657 is still below the active 81,920 cap. Inspect the deployment\u2019s CHAT_MAX_ROOMS/MAX_ROOMS environment and startup config, then either restore 5,120 or update the documentation and expose effective limits in health metrics; also verify the separate 5 GiB room-byte budget, since several rooms already approach 10 MiB.",
+  "auditor_verdict": "AGREE, with qualification: rooms_capacity rises from 20,480 to 40,960 to 81,920, and 50,657 is below the observed 81,920 cap, supporting configuration divergence rather than a demonstrated enforcement failure. However, the data cannot prove enforcement works, and 10,356,460 bytes per room is only about 0.19% of a 5 GiB budget, so aggregate byte usage still needs verification rather than being characterized as approaching the budget."
+}
