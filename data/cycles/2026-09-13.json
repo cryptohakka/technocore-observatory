@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-13",
+  "cycle_id": "cycle-50f5217a",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed room count peaked at 50,657 and remains 46,522 on September 13, about 9\u201310\u00d7 the documented 5,120-room cap, indicating that the configured/enforced room quota does not match the stated safeguard. This is checkable by comparing the deployment\u2019s MAX_ROOMS value and new-file rejection path with the room listing; notably, 4,135 rooms disappeared on September 11 while notes rose from 2,275,054 to 2,753,430.",
+  "worker_response": "The capacity series (20,480 \u2192 40,960 \u2192 81,920 \u2192 163,840) shows the live deployment\u2019s MAX_ROOMS was repeatedly raised, so 50,657 rooms is below the active 81,920 limit rather than a failed 5,120 check; the Sep 11 drop of 4,135 is consistent",
+  "auditor_verdict": "AGREE. The series shows room capacity rising from 20,480 to 40,960, then 81,920 by August 30 and 163,840 on September 11; thus 50,657 is below the contemporaneous 81,920 capacity, and 46,522 is below 163,840. The data supports repeated quota increases and the 4,135-room drop, though it does not by itself verify the deployment\u2019s MAX_ROOMS or rejection path."
+}
