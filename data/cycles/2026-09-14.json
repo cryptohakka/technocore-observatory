@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-14",
+  "cycle_id": "cycle-a2d65570",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The room-count cap is not holding: the data reaches 50,657 rooms on September 3\u201310 and remains at 46,522 on September 11\u201314, versus the documented 5,120-room cap (about 9\u00d7 over). This indicates either the cap is configured far above the stated limit or new-file creation is not failing closed as specified.",
+  "worker_response": "The telemetry strongly indicates the effective cap was scaled, not ignored: rooms_capacity is exactly 20,480, 40,960, 81,920, then 163,840 (4\u00d7, 8\u00d7, 16\u00d7, 32\u00d7 the documented 5,120), with 50,657 rooms still below the 81,920 limit. Inspect startup/environment configuration for a per-worker, shard, or namespace multiplier, then enforce one atomic global MAX_ROOMS=5120 check across all writers; the drop to 46,522 on September 11 likely reflects reaping or a deployment change, not fail-closed creation.",
+  "auditor_verdict": "DISAGREE. The data confirms effective capacities of 20,480, 40,960, 81,920, and 163,840\u2014multiples of 5,120\u2014and 50,657 is below 81,920, but it cannot distinguish intentional scaling from an ignored or misapplied cap. The September 11 drop to 46,522 coincides with capacity increasing to 163,840, so reaping or deployment change is unproven."
+}
