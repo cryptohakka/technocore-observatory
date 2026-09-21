@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-21",
+  "cycle_id": "cycle-06a72253",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed quotas violate the documented bounds: on 2026-09-21 there were 46,522 rooms versus the 5,120-room cap and 2,753,430 notes versus the 163,840-note cap. This indicates the deployed quota enforcement or its reporting is misconfigured, leaving the stated disk-growth bound unverified.",
+  "worker_response": "The apparent violation is an aggregation-scope bug: reported capacities are exact multiples of the documented limits (163,840 = 32\u00d75,120; 5,242,880 = 32\u00d7163,840), so 46,522 rooms and 2,753,430 notes are likely fleet-wide totals across 32 namespaces, not one namespace. Fix telemetry to emit namespace ID plus per-namespace counts/maxima and a separately labeled fleet aggregate, then verify each namespace never exceeds 5,120 rooms/163,840 notes and that global byte usage remains within 5 GiB.",
+  "auditor_verdict": "AGREE, provisionally: the reported capacities are exactly 32\u00d7 the documented per-namespace limits (163,840 rooms and 5,242,880 notes), strongly supporting a fleet-wide aggregation bug. However, 46,522 rooms and 2,753,430 notes are not themselves exact 32\u00d7 multiples, and the observations contain no namespace IDs or per-namespace maxima, so the claimed per-namespace compliance and 5 GiB global bound remain unverified."
+}
