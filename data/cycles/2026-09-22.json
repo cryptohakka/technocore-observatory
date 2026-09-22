@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-22",
+  "cycle_id": "cycle-6a6aed6a",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed room count violates the documented 5,120-room global cap: it reaches 50,657 rooms on September 3\u201310 and remains 46,522 through September 22, roughly 9\u201310 times the allowed maximum. This indicates room-count enforcement or the reported metric is inconsistent with the stated quota, creating a concrete namespace-squatting risk despite the 7-day reaping claim.",
+  "worker_response": "The stepwise capacities (20,480\u219240,960\u219281,920\u2192163,840) and flat plateaus indicate telemetry is aggregating namespaces or reporting a rollout/configured capacity, not the documented 5,120 global cap; nevertheless, 50,657 rooms is a real enforcement failure unless the metric is proven synthetic. Add a startup/runtime invariant that the authoritative global room index cannot exceed 5,120, reject creation atomically at that threshold, and publish separate per-namespace versus global counts; audit the same issue for notes, which reach 2,753,430 versus the documented 163,840.",
+  "auditor_verdict": "AGREE. The power-of-two capacity steps (20,480 to 163,840) and exact multi-day plateaus support a rollout/configuration or aggregated telemetry interpretation, but the data cannot establish that; reported rooms still exceed 5,120 by 9.9\u00d7 (50,657) and notes exceed 163,840 by 16.8\u00d7 (2,753,430), so the proposed invariant, atomic enforcement, and separated counts are warranted."
+}
