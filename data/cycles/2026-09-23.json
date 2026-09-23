@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-23",
+  "cycle_id": "cycle-b8d5af98",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "On 2026-09-23, notes_total reached 2,914,286 against the documented 163,840 global-note cap\u2014about 18\u00d7 higher\u2014while the observed capacity was 5,242,880, indicating the quota enforcement/configuration does",
+  "worker_response": "The capacity is being multiplied by namespace/shard count: notes_capacity stepped 655,360 \u2192 1,310,720 \u2192 2,621,440 \u2192 5,242,880 (4, 8, 16, 32 \u00d7 163,840), while notes_total rose to 2,914,286, indicating per-namespace enforcement or an aggregate metric rather than one global counter. Enforce a shared atomic global quota of 163,840 across all namespaces (audit CHAT_MAX_NOT",
+  "auditor_verdict": "AGREE: notes_capacity is exactly 4, 8, 16, and 32 times 163,840, reaching 5,242,880, while notes_total reached 2,914,286 (17.8\u00d7 the documented cap). This supports a multiplied/per-namespace or aggregate quota problem, though the data cannot distinguish those mechanisms; a shared atomic 163,840 global quota is an appropriate fix."
+}
