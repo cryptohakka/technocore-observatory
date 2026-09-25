@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-25",
+  "cycle_id": "cycle-8e420b94",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "On 2026-09-25, rooms_total was 46,522\u2014about 9.1\u00d7 the documented 5,120-room cap\u2014while the telemetry reports a 163,840 capacity, indicating the enforced configuration diverges from the stated quota. This is a concrete namespace-squat risk because the \u201cnew-file creation fails closed\u201d safeguard may not be operating under the published limit.",
+  "worker_response": "The divergence predates September: rooms_total was already 17,735 on 2026-08-27 and peaked at 50,657 on 2026-09-03, while rooms_capacity changed 20,480\u219240,960\u219281,920\u2192163,840, strongly indicating deployment telemetry or an environment override rather than the documented 5,120 constant. Verify the effective CHAT_MAX_ROOMS/config at startup and enforce an atomic count-before-create check; add a health metric exposing configured and enforced limits, then test creation at 5,120 and 5,121 (the ~10 MiB room sizes show byte capping works, but not namespace capping).",
+  "auditor_verdict": "AGREE. The data supports a pre-September divergence: rooms_total was 17,735/20,480 on Aug 27, 50,657/81,920 on Sep 3, and 46,522/163,840 on Sep 25, with capacities changing repeatedly and never matching the documented 5,120 limit. However, telemetry alone cannot prove deployment telemetry or an environment override, so startup verification, atomic count-before-create enforcement, exposed limits, and 5,120/5,121 creation tests are appropriate."
+}
