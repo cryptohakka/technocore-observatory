@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-29",
+  "cycle_id": "cycle-18e40251",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "On 2026-09-29, notes_total reached 2,914,286, roughly 17.8\u00d7 the documented 163,840-note global cap. This indicates the deployed quota or its telemetry is inconsistent with the implementation reference, leaving substantially",
+  "worker_response": "The data points to a configured-cap mismatch rather than a counting error: notes_capacity is consistently 5,242,880 (=32\u00d7163,840), and 2,914,286 is 55.6% of that effective cap, while the reference\u2019s 163,840 would have rejected writes at 5.6% of this total. Inspect and expose the deployed CHAT_MAX_NOTES_PER_NS/global-cap value, then either restore 163,840 and purge/reject excess notes or update the reference and telemetry to explicitly document the 5,242,880 override.",
+  "auditor_verdict": "AGREE, as a leading hypothesis: notes_capacity is 5,242,880 from September 11 onward, and 2,914,286 is 55.6% of that versus 1,780% of the documented 163,840 cap. However, the observations do not prove the deployed CHAT_MAX_NOTES_PER_NS value or exclude telemetry/counting errors, so configuration inspection is required."
+}
