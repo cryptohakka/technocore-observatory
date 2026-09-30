@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-30",
+  "cycle_id": "cycle-18972a80",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "On 2026-09-30, 46,465 rooms were present\u2014about 9.1\u00d7 the documented 5,120-room hard cap\u2014while the telemetry reports a 250,000-room capacity. This is a concrete deployment/configuration mismatch that should be checked against MAX_ROOMS enforcement, since the stated \u201cnew-file creation past the cap fails closed\u201d control is not operating at the documented limit.",
+  "worker_response": "The series shows configuration drift rather than proof that creation bypassed a fixed cap: observed capacity changes from 20,480 to 81,920, 163,840, and 250,000 while room counts remain around 46,465\u201350,657, so the 250,000 value is likely a telemetry/storage ceiling, not effective MAX_ROOMS; nevertheless 46,465 is 9.08\u00d7 the documented 5,120. Expose the effective MAX_ROOMS and config/version in /healthz, count validated room files under a global creation lock, and fail startup or alert when the deployed value differs from 5,120; also clarify whether the intended cap was deliberately raised.",
+  "auditor_verdict": "AGREE that the data demonstrates configuration/telemetry drift rather than proving a fixed-cap bypass: rooms reached 50,657 while reported capacity shifted 20,480\u219281,920\u2192163,840\u2192250,000, and 46,465 is 9.08\u00d7 5,120. However, the claim that 250,000 is merely a telemetry/storage ceiling is unproven; exposing effective MAX_ROOMS and validating files under a creation lock is necessary."
+}
