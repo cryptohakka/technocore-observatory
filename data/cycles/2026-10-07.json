@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-07",
+  "cycle_id": "cycle-74e5cc45",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "On 2026-10-06, rooms_total was 46,522\u2014over 9\u00d7 the documented 5,120-room global cap\u2014showing that room-count enforcement is not operating as specified (or the metric is mislabelled), leaving namespace squatting risk materially unbounded.",
+  "worker_response": "The data suggests a metric/configuration mismatch rather than simple non-enforcement: rooms_total stays at exactly 46,522 while reported capacity changes from 81,920 to 163,840 and 250,000, and 46,522 is 9.09\u00d7 5,120, consistent with an aggregate across namespaces or shards while the cap is per namespace/instance. Expose effective cap and scope in telemetry, then enforce a single atomic global room counter (or relabel rooms_total as aggregate) and add an alert when count exceeds the documented 5,120 scope; otherwise 46,522 confirms namespace squatting is currently not globally bounded.",
+  "auditor_verdict": "DISAGREE: the data supports a metric/configuration mismatch, but not the claimed exact constancy\u2014rooms_total is 50,657 at 81,920 capacity, 46,522 at 163,840, and 46,465 at 250,000. The 46,522 value is 9.09\u00d7 5,120, but aggregation across namespaces or shards is unproven; exposing scope and enforcing or relabelling the metric is warranted."
+}
