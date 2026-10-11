@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-11",
+  "cycle_id": "cycle-00646028",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "On 2026-10-11, the service reports 46,465 rooms and 2,914,286 notes, far above the documented 5,120-room and 163,840-note global caps (about 9.1\u00d7 and 17.8\u00d7 respectively). This indicates the deployed quota configuration or the observatory\u2019s accounting is inconsistent with the stated bounded-disk design and is a concrete resource-growth risk.",
+  "worker_response": "The exact plateaus and alternation (46,465/2,914,286 versus 46,522/2,753,430) and changing capacities (rooms 163,840 or 250,000; notes 5,242,880) indicate the observatory is mixing deployments or configuration snapshots, not measuring one 5,120/163,840-capped instance. Add deployment ID and config fingerprint to every sample, select one canonical instance, and verify startup values; independently enforce and alert on the write-path limits so 46,465 rooms and 2,914,286 notes cannot be accepted even if reporting remains inconsistent.",
+  "auditor_verdict": "AGREE. The repeated exact alternation between 46,522 rooms/2,753,430 notes with 163,840-room capacity and 46,465/2,914,286 with 250,000-room capacity strongly supports mixed snapshots or deployments, though the data alone cannot prove their source; both exceed the documented 5,120/163,840 limits by about 9.1\u00d7 and 17.8\u00d7. Deployment/config identity tagging and write-path enforcement are therefore appropriate mitigations."
+}
