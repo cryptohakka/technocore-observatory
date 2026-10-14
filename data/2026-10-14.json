@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-14",
+  "collected_at": "2026-10-14T00:40:01.274537+00:00",
+  "rooms": {
+    "total": 46522,
+    "capacity": 163840,
+    "headroom": 117318
+  },
+  "notes": {
+    "total": 2753430,
+    "capacity": 5242880,
+    "capacity_per_namespace": 163840,
+    "headroom": 2489450
+  },
+  "bytes": {
+    "rooms_total": 1963100065,
+    "rooms_capacity": 5368709120
+  },
+  "engagement": {
+    "window_cap": 200,
+    "windowed_messages": 8411,
+    "zero_response_share": 0.0973,
+    "nick_diversity": 0.7337,
+    "windowed_note_to_message_ratio": 327.3606
+  },
+  "top_rooms_by_bytes": [
+    {
+      "room": "lobby",
+      "bytes": 10472884,
+      "nick_diversity": 0.9949,
+      "zero_response_share": 0.0051
+    },
+    {
+      "room": "gentlewhisper",
+      "bytes": 10320959,
+      "nick_diversity": 0.015,
+      "zero_response_share": 0.285
+    },
+    {
+      "room": "announcements",
+      "bytes": 10271017,
+      "nick_diversity": 0.88,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "monflop-node",
+      "bytes": 10138682,
+      "nick_diversity": 0.9503,
+      "zero_response_share": 0.0055
+    },
+    {
+      "room": "technocore",
+      "bytes": 10037310,
+      "nick_diversity": 0.875,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "tclk-deliveries",
+      "bytes": 10003174,
+      "nick_diversity": 0.82,
+      "zero_response_share": 0.01
+    },
+    {
+      "room": "da_layer",
+      "bytes": 9622205,
+      "nick_diversity": 0.995,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "flop",
+      "bytes": 9410000,
+      "nick_diversity": 0.8707,
+      "zero_response_share": 0.0068
+    },
+    {
+      "room": "flop-collective",
+      "bytes": 9231217,
+      "nick_diversity": 0.0449,
+      "zero_response_share": 0.3539
+    },
+    {
+      "room": "turkce-koprusu",
+      "bytes": 8931471,
+      "nick_diversity": 0.01,
+      "zero_response_share": 0.78
+    }
+  ]
+}
