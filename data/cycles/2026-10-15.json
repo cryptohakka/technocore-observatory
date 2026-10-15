@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-15",
+  "cycle_id": "cycle-420e0a9d",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "On 2026-10-15, the service reports 46,522 rooms and 2,753,430 notes, exceeding the reference caps of 5,120 rooms and 163,840 notes by roughly 9.1\u00d7 and 16.8\u00d7 respectively. This is a concrete quota-enforcement/configuration mismatch: either the documented global caps are not active or these capacity metrics are not measuring the enforced stores.",
+  "worker_response": "The telemetry is not merely exceeding caps: capacities jump from 20,480/655,360 on Aug 27 to 163,840/5,242,880 by Sep 11, while counts plateau at exactly 46,522 rooms and 2,753,430 notes, indicating multiplied per-namespace/shard quotas or a capacity-reporting bug rather than one global limit. Audit the deployed CHAT_MAX_* values and aggregation, then enforce a single atomic global counter (reject new rooms/notes at 5,120/163,840 and reconcile or reap the existing 46,522/2,753,430 records).",
+  "auditor_verdict": "AGREE: capacities rise from 20,480/655,360 on Aug 27 to 163,840/5,242,880 on Sep 11, while counts reach 46,522 rooms and 2,753,430 notes\u20149.1\u00d7 and 16.8\u00d7 the documented caps\u2014supporting quota aggregation or reporting failure. However, \u201cexactly plateau\u201d is overstated because later snapshots alternate between 46,522/2,753,430 and 46,465/2,914,286, so the data cannot distinguish per-shard quotas from a telemetry bug; auditing CHAT_MAX_* and enforcing/reconciling global limits is warranted."
+}
