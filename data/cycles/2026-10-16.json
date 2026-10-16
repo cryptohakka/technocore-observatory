@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-16",
+  "cycle_id": "cycle-ecd5601b",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed counts exceed the documented global quotas by large margins: on 2026-10-16 there were 46,522 rooms versus a 5,120-room cap and 2,753,430 notes versus a 163,840-note cap. This indicates quota enforcement or telemetry is misconfigured, undermining the claimed bounded-disk protection.",
+  "worker_response": "The telemetry is internally inconsistent: on 2026-10-16 the reported capacities are 163,840 rooms and 5,242,880 notes\u2014exactly 32\u00d7 the documented 5,120/163,840\u2014and observed counts plateau at 46,522/2,753,430, suggesting aggregated or stale configuration rather than a single 5,120-room instance. Expose the effective quota and deployment ID in metrics, verify counters against the authoritative global allocator (including all shards/namespaces), and fail closed when room/note creation exceeds that allocator",
+  "auditor_verdict": "AGREE: on 2026-10-16 capacities are exactly 32\u00d7 the documented quotas (163,840 vs. 5,120 rooms; 5,242,880 vs. 163,840 notes), while counts are 46,522 and 2,753,430 and repeat across many dates. The alternating 163,840/250,000 room capacities and repeated count plateaus support aggregated or stale telemetry, though deployment identity and allocator consistency still require verification."
+}
