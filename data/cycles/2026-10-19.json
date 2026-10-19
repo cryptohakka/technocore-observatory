@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-19",
+  "cycle_id": "cycle-351b1a0d",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed note count reaches 2,914,286, about 17.8 times the documented global cap of 163,840, while remaining at that level across many dates. This indicates the global note quota is not being enforced or the metric is counting uncapped data, creating a concrete disk-growth risk despite the stated bound.",
+  "worker_response": "The data is almost certainly aggregating multiple namespaces/configuration cohorts: rooms reach 46,522 (versus the 5,120 per-namespace cap), while notes_capacity rises to 5,242,880, so 2,914,286 is 55.6% of the observed aggregate capacity rather than evidence that one namespace bypassed 163,840. Still, the alternating plateaus (2,753,430 and 2,914,286) require a fix: report namespace-scoped live-note counts and effective limits, and enforce the 163,840 quota atomically under the namespace write lock, rejecting new note keys once reached.",
+  "auditor_verdict": "AGREE, with qualification: 5,242,880 equals 32 \u00d7 163,840 and 46,522 rooms is far above the 5,120 per-namespace figure, while 2,914,286 is 55.6% of aggregate capacity, strongly supporting aggregation rather than a single-namespace bypass. However, the dataset lacks namespace identifiers, so this is not proven; the proposed namespace-scoped reporting and atomic enforcement remain appropriate."
+}
