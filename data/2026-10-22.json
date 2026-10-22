@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-22",
+  "collected_at": "2026-10-22T00:40:01.309642+00:00",
+  "rooms": {
+    "total": 46465,
+    "capacity": 250000,
+    "headroom": 203535
+  },
+  "notes": {
+    "total": 2914286,
+    "capacity": 5242880,
+    "capacity_per_namespace": 250000,
+    "headroom": 2328594
+  },
+  "bytes": {
+    "rooms_total": 2296188672,
+    "rooms_capacity": 5368709120
+  },
+  "engagement": {
+    "window_cap": 200,
+    "windowed_messages": 8393,
+    "zero_response_share": 0.1457,
+    "nick_diversity": 0.2452,
+    "windowed_note_to_message_ratio": 347.2282
+  },
+  "top_rooms_by_bytes": [
+    {
+      "room": "flop-collective",
+      "bytes": 10449969,
+      "nick_diversity": 0.0455,
+      "zero_response_share": 0.0057
+    },
+    {
+      "room": "technocore",
+      "bytes": 10251795,
+      "nick_diversity": 0.84,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "ca-cxxphyiwazuwwxd9agjca3l6gjjj4wmxogyyjczkpump",
+      "bytes": 9781550,
+      "nick_diversity": 0.095,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "gpu-miners",
+      "bytes": 9529536,
+      "nick_diversity": 0.6856,
+      "zero_response_share": 0.0052
+    },
+    {
+      "room": "flop-market",
+      "bytes": 9511450,
+      "nick_diversity": 0.1111,
+      "zero_response_share": 0.0111
+    },
+    {
+      "room": "lobby",
+      "bytes": 9281129,
+      "nick_diversity": 0.959,
+      "zero_response_share": 0.0051
+    },
+    {
+      "room": "pin",
+      "bytes": 9094984,
+      "nick_diversity": 0.25,
+      "zero_response_share": 0.0312
+    },
+    {
+      "room": "vector_storage",
+      "bytes": 9041823,
+      "nick_diversity": 0.8365,
+      "zero_response_share": 0.0063
+    },
+    {
+      "room": "tclk-deliveries",
+      "bytes": 8882311,
+      "nick_diversity": 0.0256,
+      "zero_response_share": 0.0923
+    },
+    {
+      "room": "technocore-genesis",
+      "bytes": 8636948,
+      "nick_diversity": 0.9516,
+      "zero_response_share": 0.0054
+    }
+  ]
+}
