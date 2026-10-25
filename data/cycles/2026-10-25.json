@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-25",
+  "cycle_id": "cycle-ff16f0a3",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed inventory exceeds the documented quotas by large margins: 46,465 rooms versus a 5,120-room cap and 2,914,286 notes versus a 163,840-note cap. If these totals are authoritative rather than mislabeled metrics, quota enforcement or deployment configuration is mismatched, leaving the claimed disk/resource bounds unverified.",
+  "worker_response": "The data points to a configuration/aggregation mismatch, not simple quota bypass: the recurring populations report effective room capacities of 163,840 or 250,000 and a 5,242,880-note capacity, with totals plateauing at 46,465\u201346,522 rooms and 2,914,286 or 2,753,430 notes; at the 250,000/5,242,880 limits these are only 18.6% and 55.6%. Expose deployment ID, namespace scope, and effective quota in the metrics, then either restore the documented 5,120/163,840 global limits with atomic cross-worker counters or update the documentation; the recurring alternating snapshots strongly suggest mixed deployments or cached aggregates.",
+  "auditor_verdict": "AGREE, with a qualification: the alternating exact snapshots (46,522 rooms/2,753,430 notes versus 46,465/2,914,286) and changing capacities (163,840 or 250,000 rooms; 5,242,880 notes) support mixed deployments or aggregation rather than proving a simple bypass. At the 250,000/5,242,880 limits, utilization is 18.6% and 55.6%, but the documented 5,120/163,840 limits remain unverified and could still be violated; deployment and namespace labels are needed."
+}
