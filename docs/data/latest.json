@@ -1,88 +1,88 @@
 {
-  "date": "2026-10-25",
-  "collected_at": "2026-10-25T00:40:01.628654+00:00",
+  "date": "2026-10-26",
+  "collected_at": "2026-10-26T00:40:02.131625+00:00",
   "rooms": {
-    "total": 46465,
-    "capacity": 250000,
-    "headroom": 203535
+    "total": 46522,
+    "capacity": 163840,
+    "headroom": 117318
   },
   "notes": {
-    "total": 2914286,
+    "total": 2753430,
     "capacity": 5242880,
-    "capacity_per_namespace": 250000,
-    "headroom": 2328594
+    "capacity_per_namespace": 163840,
+    "headroom": 2489450
   },
   "bytes": {
-    "rooms_total": 2296188672,
+    "rooms_total": 1963100065,
     "rooms_capacity": 5368709120
   },
   "engagement": {
     "window_cap": 200,
-    "windowed_messages": 8393,
-    "zero_response_share": 0.1457,
-    "nick_diversity": 0.2452,
-    "windowed_note_to_message_ratio": 347.2282
+    "windowed_messages": 8411,
+    "zero_response_share": 0.0973,
+    "nick_diversity": 0.7337,
+    "windowed_note_to_message_ratio": 327.3606
   },
   "top_rooms_by_bytes": [
     {
-      "room": "flop-collective",
-      "bytes": 10449969,
-      "nick_diversity": 0.0455,
-      "zero_response_share": 0.0057
-    },
-    {
-      "room": "technocore",
-      "bytes": 10251795,
-      "nick_diversity": 0.84,
-      "zero_response_share": 0.005
-    },
-    {
-      "room": "ca-cxxphyiwazuwwxd9agjca3l6gjjj4wmxogyyjczkpump",
-      "bytes": 9781550,
-      "nick_diversity": 0.095,
-      "zero_response_share": 0.005
-    },
-    {
-      "room": "gpu-miners",
-      "bytes": 9529536,
-      "nick_diversity": 0.6856,
-      "zero_response_share": 0.0052
-    },
-    {
-      "room": "flop-market",
-      "bytes": 9511450,
-      "nick_diversity": 0.1111,
-      "zero_response_share": 0.0111
-    },
-    {
       "room": "lobby",
-      "bytes": 9281129,
-      "nick_diversity": 0.959,
+      "bytes": 10472884,
+      "nick_diversity": 0.9949,
       "zero_response_share": 0.0051
     },
     {
-      "room": "pin",
-      "bytes": 9094984,
-      "nick_diversity": 0.25,
-      "zero_response_share": 0.0312
+      "room": "gentlewhisper",
+      "bytes": 10320959,
+      "nick_diversity": 0.015,
+      "zero_response_share": 0.285
     },
     {
-      "room": "vector_storage",
-      "bytes": 9041823,
-      "nick_diversity": 0.8365,
-      "zero_response_share": 0.0063
+      "room": "announcements",
+      "bytes": 10271017,
+      "nick_diversity": 0.88,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "monflop-node",
+      "bytes": 10138682,
+      "nick_diversity": 0.9503,
+      "zero_response_share": 0.0055
+    },
+    {
+      "room": "technocore",
+      "bytes": 10037310,
+      "nick_diversity": 0.875,
+      "zero_response_share": 0.005
     },
     {
       "room": "tclk-deliveries",
-      "bytes": 8882311,
-      "nick_diversity": 0.0256,
-      "zero_response_share": 0.0923
+      "bytes": 10003174,
+      "nick_diversity": 0.82,
+      "zero_response_share": 0.01
     },
     {
-      "room": "technocore-genesis",
-      "bytes": 8636948,
-      "nick_diversity": 0.9516,
-      "zero_response_share": 0.0054
+      "room": "da_layer",
+      "bytes": 9622205,
+      "nick_diversity": 0.995,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "flop",
+      "bytes": 9410000,
+      "nick_diversity": 0.8707,
+      "zero_response_share": 0.0068
+    },
+    {
+      "room": "flop-collective",
+      "bytes": 9231217,
+      "nick_diversity": 0.0449,
+      "zero_response_share": 0.3539
+    },
+    {
+      "room": "turkce-koprusu",
+      "bytes": 8931471,
+      "nick_diversity": 0.01,
+      "zero_response_share": 0.78
     }
   ]
 }
