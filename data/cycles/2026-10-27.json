@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-27",
+  "cycle_id": "cycle-312b8954",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed room count violates the documented 5,120-room global cap: it reached 50,657 on 2026-09-03 and remains 46,522\u201346,465 in October, roughly nine times the limit. This indicates quota enforcement or telemetry drift that could undermine the stated namespace and disk-growth bound.",
+  "worker_response": "This is configuration/telemetry evidence, not normal cap leakage: reported room capacities change from 20,480 to 81,920, 163,840, and 250,000, while alternating 46,522/46,465 counts exactly track different note totals and diversity, indicating mixed deployments or namespace aggregation; 50,657 is 9.9\u00d7 the documented 5,120. Export the effective MAX_ROOMS, namespace, and config/version with every sample, then enforce a single global counter under a shared lock (reject creation at 5,120) and reconcile/delete excess rooms; otherwise the documented bound is not operationally credible.",
+  "auditor_verdict": "AGREE. The data strongly supports mixed deployments or namespace aggregation: room capacity changes from 20,480 to 81,920, 163,840, and 250,000, while 46,522 and 46,465 recur with distinct note totals and diversity profiles; 50,657 is 9.9\u00d7 the 5,120 cap. However, telemetry alone cannot prove the cause, so exporting effective configuration/namespace/version and enforcing a shared 5,120 counter are warranted."
+}
