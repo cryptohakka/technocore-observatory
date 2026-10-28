@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-28",
+  "cycle_id": "cycle-66962ff0",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "On 2026-10-28, the service reports 46,522 rooms and 2,753,430 notes, exceeding the documented default caps of 5,120 rooms and 163,840 notes by 9.1\u00d7 and 16.8\u00d7 respectively. This indicates the deployed quota configuration is materially different from the stated safeguards and warrants checking whether the 5 GiB room and 163,840-note bounds are actually enforced.",
+  "worker_response": "The capacity fields are exactly 32\u00d7 the documented defaults (163,840 rooms = 32\u00d75,120; 5,242,880 notes = 32\u00d7163,840), and repeated plateaus suggest enlarged quotas are actively enforced rather than mere counting error; top-room files near 10 MiB also confirm per-room rotation. Inspect the deployed effective MAX_ROOMS/CHAT_MAX_NOTES_PER_NS (and any namespace multiplier or metrics-label swap), then restore 5,120/163,840 or explicitly document the 32\u00d7 override and expose these values in /healthz.",
+  "auditor_verdict": "DISAGREE. The latest capacities are indeed exactly 32\u00d7 defaults (163,840 rooms and 5,242,880 notes), but capacities fluctuate from 20,480 to 250,000 rooms and 655,360 to 5,242,880 notes, while totals plateau below the latest limits at 46,522 and 2,753,430; thus enforcement and the cause remain unproven. Near-10 MiB room files support rotation, not the claimed quota configuration."
+}
