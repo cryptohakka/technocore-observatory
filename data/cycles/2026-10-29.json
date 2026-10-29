@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-29",
+  "cycle_id": "cycle-9035e8be",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed deployment exceeds the documented global quotas: on 2026-10-29 it held 46,522 rooms versus the 5,120-room cap and 2,753,430 notes versus the 163,840-note cap. This indicates the room/note quota enforcement or its configuration is not aligned with the stated disk-safety mechanism.",
+  "worker_response": "The telemetry\u2019s \u201ccapacity\u201d is not the documented limit: it changes in powers of two (rooms 20,480\u2192163,840; notes 655,360\u21925,242,880), while observed totals repeat exactly at 46,522/2,753,430, indicating shard/namespace or synthetic capacity aggregation rather than one global counter; the per-room ring is working (top rooms are ~9\u201310.5 MB). Audit effective environment/config and counter scope, then enforce a single atomic global admission check at 5,120 rooms and 163,840 notes (returning failure on creation), and publish those effective limits separately from aggregated observability metrics.",
+  "auditor_verdict": "DISAGREE in part: the data confirms telemetry capacities differ from documented limits and totals repeat at 46,522 rooms/2,753,430 notes, but capacities include 250,000 rooms, so they do not consistently change in powers of two, and shard/namespace aggregation is unproven. Auditing effective configuration and implementing an atomic global check at 5,120 rooms and 163,840 notes is justified; top-room sizes of 8.9\u201310.5 MB only support bounded per-room storage, not that enforcement works globally."
+}
