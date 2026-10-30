@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-30",
+  "cycle_id": "cycle-f0307699",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The documented 5,120-room cap is not reflected in observations: rooms_total reached 50,657 on 2026-09-03 and remains about 46,500\u201346,522 through October, roughly nine times the stated limit. This is a checkable deployment/configuration-drift risk: room creation or the advertised cap is not being enforced as specified.",
+  "worker_response": "This is configuration drift, not a rotation issue: observed capacity values jump from 20,480 to 40,960, 81,920, 163,840, and 250,000, while rooms_total plateaus at 50,657 and later 46,522\u2014both below the active telemetry capacity but 9.9\u00d7 and 9.1\u00d7 the documented 5,120. Inspect the deployed CHAT_MAX_ROOMS/environment and startup config, then make the service fail closed unless the effective cap is 5,120 (or update the documentation), export that value in health/metrics, and add an alert when rooms_total exceeds it; existing excess rooms require explicit reaping rather than assuming the cap will retroactively remove them.",
+  "auditor_verdict": "DISAGREE: the observations confirm a cap mismatch, but cannot distinguish configuration drift from rotation or telemetry artifacts; rooms_capacity changes from 20,480 to 40,960, 81,920, 163,840, and 250,000 while rooms_total repeats 46,465/46,522. The documented 5,120 cap is nevertheless exceeded by 50,657 (9.9\u00d7) and 46,522 (9.1\u00d7), so inspecting effective configuration and adding exported-cap alerts is justified."
+}
