@@ -1,0 +1,8 @@
+{
+  "date": "2026-11-04",
+  "cycle_id": "cycle-85726c47",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed room count reaches 50,657 on 2026-09-03, nearly ten times the documented 5,120-room cap (and remains 46,465\u201346,522 through November), indicating the global room-count quota is not being enforced or this metric is counting a different resource. This is a concrete risk because the documented disk-bound guarantee depends on that cap alongside the per-room and total-byte limits.",
+  "worker_response": "The capacity field contradicts the design too: it is 81,920 when rooms_total is 50,657, then 163,840/250,000/300,000, while notes_capacity similarly reaches 16,777,216; repeated exact snapshots and the drop to 16,499 on November 2 indicate an aggregate or synthetic quota metric, not one 5,120-room namespace. Still verify by exporting effective MAX_ROOMS and namespace ID, then count validated room files per instance; publish those alongside the metric and enforce MAX_ROOMS=5,120 at the creation lock, while retaining the observed ~10 MiB per-room evidence (largest file 10,400,585 bytes).",
+  "auditor_verdict": "AGREE: the data supports that these are not a single 5,120-room namespace metric\u2014rooms_total reaches 50,657 (9.9\u00d7 the cap), while rooms_capacity varies from 81,920 to 300,000 and notes_capacity reaches 16,777,216, with repeated exact snapshots and a drop to 16,499. However, the observations cannot prove the metric is aggregate or synthetic; exporting MAX_ROOMS/namespace IDs and counting validated files per instance is necessary, and the proposed creation-lock enforcement is appropriate."
+}
