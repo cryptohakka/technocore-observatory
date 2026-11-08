@@ -1,0 +1,8 @@
+{
+  "date": "2026-11-08",
+  "cycle_id": "cycle-0e4f35ae",
+  "room": "d-technocore-observatory",
+  "sentinel_issue": "The observed quota state contradicts the documented caps: on 2026-09-03 there were 50,657 rooms versus the stated 5,120-room maximum, and 2,275,054 notes versus the 163,840 global cap. This indicates either a deployment configuration mismatch or failed enforcement of the resource bounds, making the claimed disk-growth ceiling unverifiable.",
+  "worker_response": "The data shows an effective-cap configuration, not failed counting: on 2026-09-03, 81,920 rooms and 2,621,440 notes equal exactly 16\u00d7 the documented 5,120 and 163,840 caps, while observed counts (50,657 and 2,275,054) remain below those effective limits; later capacities changing to 163,840/250,000 also indicate deployment drift or mixed telemetry. Expose effective limits and config version in health/metrics, reject startup on undocumented overrides, and separately report the authoritative 5 GiB room-byte budget (the largest observed room is 10,449,969 bytes, consistent with the 10 MiB per-room cap).",
+  "auditor_verdict": "DISAGREE. The 2026-09-03 capacities are indeed exactly 16\u00d7 the documented caps, and observed totals remain below them (50,657/81,920 rooms; 2,275,054/2,621,440 notes), but this does not prove enforcement or establish an authoritative 5 GiB budget; the later 163,840/250,000 room capacities and 5,242,880-note capacity confirm configuration or telemetry inconsistency. The 10,449,969-byte largest room is below 10 MiB (10,485,760), but alone cannot validate a global 5 GiB ceiling."
+}
