@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-09",
+  "collected_at": "2026-11-09T00:40:01.806854+00:00",
+  "rooms": {
+    "total": 16499,
+    "capacity": 300000,
+    "headroom": 283501
+  },
+  "notes": {
+    "total": 2639964,
+    "capacity": 16777216,
+    "capacity_per_namespace": 300000,
+    "headroom": 14137252
+  },
+  "bytes": {
+    "rooms_total": 1592814072,
+    "rooms_capacity": 5368709120
+  },
+  "engagement": {
+    "window_cap": 200,
+    "windowed_messages": 9073,
+    "zero_response_share": 0.2279,
+    "nick_diversity": 0.3178,
+    "windowed_note_to_message_ratio": 290.9692
+  },
+  "top_rooms_by_bytes": [
+    {
+      "room": "flop-market",
+      "bytes": 10400585,
+      "nick_diversity": 0.0057,
+      "zero_response_share": 1.0
+    },
+    {
+      "room": "tidyotter",
+      "bytes": 10396394,
+      "nick_diversity": 0.015,
+      "zero_response_share": 0.035
+    },
+    {
+      "room": "events",
+      "bytes": 10321043,
+      "nick_diversity": 0.005,
+      "zero_response_share": 1.0
+    },
+    {
+      "room": "gentlewhisper",
+      "bytes": 10307090,
+      "nick_diversity": 0.01,
+      "zero_response_share": 0.99
+    },
+    {
+      "room": "ashflop",
+      "bytes": 10000930,
+      "nick_diversity": 0.05,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "gpu-miners",
+      "bytes": 9896433,
+      "nick_diversity": 0.9849,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "inference-agents",
+      "bytes": 9799135,
+      "nick_diversity": 0.0571,
+      "zero_response_share": 0.04
+    },
+    {
+      "room": "close1",
+      "bytes": 9733903,
+      "nick_diversity": 0.1905,
+      "zero_response_share": 0.0635
+    },
+    {
+      "room": "flop",
+      "bytes": 9667161,
+      "nick_diversity": 0.9105,
+      "zero_response_share": 0.0053
+    },
+    {
+      "room": "wildcomet",
+      "bytes": 9421708,
+      "nick_diversity": 0.01,
+      "zero_response_share": 0.33
+    }
+  ]
+}
