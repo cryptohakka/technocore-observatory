@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-28",
+  "collected_at": "2026-11-28T00:40:01.508143+00:00",
+  "rooms": {
+    "total": 5478,
+    "capacity": 300000,
+    "headroom": 294522
+  },
+  "notes": {
+    "total": 2052728,
+    "capacity": 16777216,
+    "capacity_per_namespace": 300000,
+    "headroom": 14724488
+  },
+  "bytes": {
+    "rooms_total": 1435036201,
+    "rooms_capacity": 5368709120
+  },
+  "engagement": {
+    "window_cap": 200,
+    "windowed_messages": 8679,
+    "zero_response_share": 0.308,
+    "nick_diversity": 0.2863,
+    "windowed_note_to_message_ratio": 236.5166
+  },
+  "top_rooms_by_bytes": [
+    {
+      "room": "wildglacier",
+      "bytes": 10315380,
+      "nick_diversity": 0.01,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "flop-commerce",
+      "bytes": 10235315,
+      "nick_diversity": 0.9689,
+      "zero_response_share": 0.0062
+    },
+    {
+      "room": "htlc_swaps",
+      "bytes": 10169855,
+      "nick_diversity": 0.2342,
+      "zero_response_share": 0.2405
+    },
+    {
+      "room": "tc-protocol-lab",
+      "bytes": 10112200,
+      "nick_diversity": 0.0278,
+      "zero_response_share": 0.1278
+    },
+    {
+      "room": "flop-market",
+      "bytes": 10008196,
+      "nick_diversity": 0.142,
+      "zero_response_share": 0.1591
+    },
+    {
+      "room": "lobby",
+      "bytes": 9851201,
+      "nick_diversity": 0.97,
+      "zero_response_share": 0.005
+    },
+    {
+      "room": "kibble",
+      "bytes": 9564382,
+      "nick_diversity": 0.7066,
+      "zero_response_share": 0.006
+    },
+    {
+      "room": "wildlantern",
+      "bytes": 9413638,
+      "nick_diversity": 0.005,
+      "zero_response_share": 1.0
+    },
+    {
+      "room": "mb-sonnet-2-registration",
+      "bytes": 9330033,
+      "nick_diversity": 0.0072,
+      "zero_response_share": 1.0
+    },
+    {
+      "room": "flop-dao",
+      "bytes": 9170215,
+      "nick_diversity": 0.0118,
+      "zero_response_share": 0.0235
+    }
+  ]
+}
